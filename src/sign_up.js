@@ -1,4 +1,4 @@
-import React,{useState}from 'react'
+import React,{useState, useEffect}from 'react'
 
 function Signup() {
     const initialvalues = {username:"",email:"",password:"",confirm_password:""};
@@ -15,6 +15,11 @@ function Signup() {
         setissubmit(true);
         seterror(validate(Data));
     };
+    useEffect(() =>{
+        if(Object.keys(error).length === 0 && issubmit){
+            console.log(Data);
+        }
+    },[error]);
     const validate = (value) =>{
         const errors = {};
         if(!value.username){
@@ -29,7 +34,7 @@ function Signup() {
         if(!value.confirm_password){
             errors.confirm_password= 're-enter the password';
         }
-    }
+    };
     return (
         <div className='container'>
             <form onSubmit= {handlesubmit}>
