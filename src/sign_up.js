@@ -1,4 +1,4 @@
-import React,{useState, useEffect}from 'react'
+import React,{useState, useEffect}from 'react';
 
 function Signup() {
     const initialvalues = {username:"",email:"",password:"",confirm_password:""};
@@ -34,6 +34,7 @@ function Signup() {
         if(!value.confirm_password){
             errors.confirm_password= 're-enter the password';
         }
+        return errors;
     };
     return (
         <div className='container'>
@@ -45,18 +46,22 @@ function Signup() {
                     <label>Username</label>
                     <input type= 'text' name= 'Name' placeholder= 'Enter the user name' value= {Data.username} onChange= {handlechange}/>
                 </div>
+                <p>{error.username}</p>
                 <div className = 'field'>
                     <label>Email</label>
                     <input type= 'text' name= 'Email' placeholder= 'Enter the email-id' value= {Data.email} onChange= {handlechange}/>
                 </div>
+                <p>{error.email}</p>
                 <div className = 'field'>
                     <label>password</label>
                     <input type= 'text' name= 'Password' placeholder= 'Enter the password' value= {Data.password} onChange= {handlechange}/>
                 </div>
+                <p>{error.password}</p>
                 <div className = 'field'>
                     <label>confirm password</label>
                     <input type= 'text' name= 'Confirm password' placeholder= 'confirm password' value= {Data.confirm_password} onChange= {handlechange}/>
                 </div>
+                <p>{error.confirm_password}</p>
                 <button className= 'usebutton'>Sign Up</button>
             </div>
             </form>
