@@ -19,15 +19,12 @@ body {
   border-radius: 5px;
   background: #fff;
 }
-pre {
-  width: 70%;
-  color: #fff;
+.field {
+  width: 40%;
+  color: rgb(15, 14, 14);
   font-size: larger;
 }
 
 button {
   background: #0563b4;
-}
-p {
-  color:red
 }
