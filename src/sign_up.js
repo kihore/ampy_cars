@@ -1,47 +1,59 @@
-import React,{useState}from 'react';
+import React from 'react';
+import axios from 'axios';
 
 function Signup() {
-    const initialvalues = {username:"",email:"",password:"",confirm_password:""};
-    const [Data,setData] = useState(initialvalues);
+    function handlechange(){
+        
+        axios.post("http://localhost:9000",{
+        Name:document.getElementsByName("Name").value,
+        Email:document.getElementsByName("Email").value,
+        Password:document.getElementsByName("Password").value,
+        Confirm_password:document.getElementsByName("Confirm_password").value,
 
-    const handlechange = (event) =>{
-        const {name,value} = event.target;
-        setData ({...setData, [name]: value});
-    };
+    })
+    .then(resp=>{
+        console.log(resp.data);
+        document.getElementsByName("Name").value="";
+        document.getElementsByName("Email").value="";
+        document.getElementsByName("Password").value="";
+        document.getElementsByName("Confirm_password").value="";
+})
+.catch(function(err){
+    console.log("error");
+})
+    }
 
     return (
         <div className='container'>
             <form>
             <h2>Sign Up</h2>
-            <div className='ui divider'></div>
-            <div className= 'ui form'>
+            
                 <div className = 'field'>
                     <label>Username</label>
                     <input type= 'text' name= 'Name' placeholder= 'Enter the user name'
-                     value= {Data.username} onChange= {handlechange}  
                      required 
                      pattern= '^[a-zA-Z0-9_]{5,}[a-zA-Z]+[0-9]*$'/>
                 </div>
                 
                 <div className = 'field'>
                     <label>Email</label>
-                    <input type= 'text' name= 'Email' placeholder= 'Enter the email-id' value= {Data.email} onChange= {handlechange} required/>
+                    <input type= 'text' name= 'Email' placeholder= 'Enter the email-id' 
+                    required/>
                 </div>
                
                 <div className = 'field'>
                     <label>password</label>
-                    <input type= 'password' name= 'Password' placeholder= 'Enter the password' value= {Data.password} 
-                    onChange= {handlechange}
-                     required
-                     pattern= '^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$' />
+                    <input type= 'password' name= 'Password' placeholder= 'Enter the password' 
+                    required
+                     />
                 </div>
                 
                 <div className = 'field'>
                     <label>confirm password</label>
-                    <input type= 'password' name= 'Confirm password' placeholder= 'confirm password' value= {Data.confirm_password} onChange= {handlechange} required  pattern= 'value.Password'/>
+                    <input type= 'password' name= 'Confirm_password' placeholder= 'confirm password' required />
                 </div>
-                <button className= 'usebutton'>Sign Up</button>
-            </div>
+                <button onClick={handlechange} type="button">Sign Up</button>
+            
             </form>
         </div>
     )
