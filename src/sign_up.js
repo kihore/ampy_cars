@@ -50,7 +50,7 @@ function Signup() {
                 
                 <div className = 'field'>
                     <label>confirm password</label>
-                    <input type= 'password' name= 'Confirm_password' placeholder= 'confirm password' required />
+                    <input type= 'password' name= 'Confirm_password' placeholder= 'confirm password' value.password = confirm_password required />
                 </div>
                 <button onClick={handlechange} type="button">Sign Up</button>
             
